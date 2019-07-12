@@ -6,11 +6,9 @@ import (
 	informers "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions"
 
 	"github.com/RuiWang14/k8s-istio-client/pkg/signals"
-	"github.com/golang/glog"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
-	"k8s.io/klog"
 	"log"
 	"time"
 )
@@ -20,19 +18,26 @@ func main() {
 
 	kubeconfig := "/Users/Rui/.kube/config"
 	namespace := "default"
-	if len(kubeconfig) == 0 || len(namespace) == 0 {
-		log.Fatalf("Environment variables KUBECONFIG and NAMESPACE need to be set")
-	}
+
+	// rest config
 	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	if err != nil {
 		log.Fatalf("Failed to create k8s rest client: %s", err)
 	}
 
+	// istio client
 	ic, err := versionedclient.NewForConfig(restConfig)
 	if err != nil {
 		log.Fatalf("Failed to create istio client: %s", err)
 	}
-	// Test VirtualServices
+
+	// kube client for event board cast
+	kubeClient, err := kubernetes.NewForConfig(restConfig)
+	if err != nil {
+		log.Fatalf("Error building kubernetes clientset: %s", err.Error())
+	}
+
+	// List VirtualServices
 	vsList, err := ic.NetworkingV1alpha3().VirtualServices(namespace).List(metav1.ListOptions{})
 	if err != nil {
 		log.Fatalf("Failed to get VirtualService in %s namespace: %s", namespace, err)
@@ -42,28 +47,18 @@ func main() {
 		log.Printf("Index: %d VirtualService Hosts: %+v\n", i, vs.Spec.GetHosts())
 	}
 
-	// set up signals so we handle the first shutdown signal gracefully
+	// Test Customer istio controller
 	stopCh := signals.SetupSignalHandler()
 
-	kubeClient, err := kubernetes.NewForConfig(restConfig)
-	if err != nil {
-		glog.Fatalf("Error building kubernetes clientset: %s", err.Error())
-	}
+	informerFactory := informers.NewSharedInformerFactory(ic, time.Second*30)
 
-	exampleClient, err := versionedclient.NewForConfig(restConfig)
-	if err != nil {
-		klog.Fatalf("Error building example clientset: %s", err.Error())
-	}
+	controller := NewController(kubeClient, ic,
+		informerFactory.Networking().V1alpha3().VirtualServices())
 
-	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second*30)
-
-	controller := NewController(kubeClient, exampleClient,
-		exampleInformerFactory.Networking().V1alpha3().VirtualServices())
-
-	go exampleInformerFactory.Start(stopCh)
+	go informerFactory.Start(stopCh)
 
 	if err = controller.Run(1, stopCh); err != nil {
-		glog.Fatalf("Error running controller: %s", err.Error())
+		log.Fatalf("Error running controller: %s", err.Error())
 	}
 
 }
