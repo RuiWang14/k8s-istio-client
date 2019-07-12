@@ -4,7 +4,7 @@ a go client for operating istio in k8s cluster
 
 ## 原理
 
-![image](docs/imgs/customer controller.png)
+![image](https://raw.githubusercontent.com/RuiWang14/k8s-istio-client/master/docs/imgs/customer%20controller.png)
 
 Informer 有两个作用：
 1. 通过 listWatch 机制与 kube api server 同步，更新维护本地缓存；
