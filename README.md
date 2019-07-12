@@ -22,3 +22,14 @@ control loop 控制循环:
 
 - “期望状态”：APIServer 里保存的，用户提交到 APIServer 里的信息（已经缓存在了本地）；
 - “实际状态”：集群/业务实际的状态；
+
+## CRD 代码生成
+步骤如下：
+1. 在 pkg/apis/{API Group}/{version} 下编写 crd 定义
+2. 增加合适的代码生成标签，[参考](https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/)
+3. 利用 [code-generator](https://github.com/kubernetes/code-generator) 生成 clientset、informer 等代码
+
+如果是需要操作别人已经预先定义好的 crd，可以直接在定义 crd 时进行引用。
+以 istio 的 virtual service 为例，只需引入 istio.io/api/networking/v1alpha3/VirtualService 即可。
+
+
