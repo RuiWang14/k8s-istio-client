@@ -25,7 +25,7 @@ import (
 
 	versioned "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
-	samplecrd "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/samplecrd"
+	networking "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/networking"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Samplecrd() samplecrd.Interface
+	Networking() networking.Interface
 }
 
-func (f *sharedInformerFactory) Samplecrd() samplecrd.Interface {
-	return samplecrd.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Networking() networking.Interface {
+	return networking.New(f, f.namespace, f.tweakListOptions)
 }

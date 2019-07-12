@@ -19,7 +19,7 @@ limitations under the License.
 package scheme
 
 import (
-	samplecrdv1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/samplecrd/v1"
+	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -31,7 +31,7 @@ var Scheme = runtime.NewScheme()
 var Codecs = serializer.NewCodecFactory(Scheme)
 var ParameterCodec = runtime.NewParameterCodec(Scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
-	samplecrdv1.AddToScheme,
+	networkingv1alpha3.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

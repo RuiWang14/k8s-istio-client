@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	samplecrdv1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/samplecrd/v1"
-	fakesamplecrdv1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/samplecrd/v1/fake"
+	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
+	fakenetworkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -76,7 +76,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// SamplecrdV1 retrieves the SamplecrdV1Client
-func (c *Clientset) SamplecrdV1() samplecrdv1.SamplecrdV1Interface {
-	return &fakesamplecrdv1.FakeSamplecrdV1{Fake: &c.Fake}
+// NetworkingV1alpha3 retrieves the NetworkingV1alpha3Client
+func (c *Clientset) NetworkingV1alpha3() networkingv1alpha3.NetworkingV1alpha3Interface {
+	return &fakenetworkingv1alpha3.FakeNetworkingV1alpha3{Fake: &c.Fake}
 }

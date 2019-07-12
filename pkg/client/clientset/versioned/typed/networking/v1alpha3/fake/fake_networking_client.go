@@ -19,22 +19,22 @@ limitations under the License.
 package fake
 
 import (
-	v1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/samplecrd/v1"
+	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeSamplecrdV1 struct {
+type FakeNetworkingV1alpha3 struct {
 	*testing.Fake
 }
 
-func (c *FakeSamplecrdV1) Networks(namespace string) v1.NetworkInterface {
-	return &FakeNetworks{c, namespace}
+func (c *FakeNetworkingV1alpha3) VirtualServices(namespace string) v1alpha3.VirtualServiceInterface {
+	return &FakeVirtualServices{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeSamplecrdV1) RESTClient() rest.Interface {
+func (c *FakeNetworkingV1alpha3) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }
