@@ -14,40 +14,40 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualService is a Istio VirtualService resource
-type VirtualService struct {
+// ServiceEntry is a Istio ServiceEntry resource
+type ServiceEntry struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec VirtualServiceSpec `json:"spec"`
+	Spec ServiceEntrySpec `json:"spec"`
 }
 
-func (vs *VirtualService) GetSpecMessage() proto.Message {
-	return &vs.Spec.VirtualService
+func (vs *ServiceEntry) GetSpecMessage() proto.Message {
+	return &vs.Spec.ServiceEntry
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualServiceList is a list of VirtualService resources
-type VirtualServiceList struct {
+// ServiceEntryList is a list of ServiceEntry resources
+type ServiceEntryList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 
-	Items []VirtualService `json:"items"`
+	Items []ServiceEntry `json:"items"`
 }
 
-// VirtualServiceSpec is a wrapper around Istio VirtualService
-type VirtualServiceSpec struct {
-	istiov1alpha3.VirtualService
+// ServiceEntrySpec is a wrapper around Istio ServiceEntry
+type ServiceEntrySpec struct {
+	istiov1alpha3.ServiceEntry
 }
 
-func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
+func (p *ServiceEntrySpec) MarshalJSON() ([]byte, error) {
 	buffer := bytes.Buffer{}
 	writer := bufio.NewWriter(&buffer)
 	marshaler := jsonpb.Marshaler{}
-	err := marshaler.Marshal(writer, &p.VirtualService)
+	err := marshaler.Marshal(writer, &p.ServiceEntry)
 	if err != nil {
-		log.Printf("Could not marshal PolicySpec. Error: %v", err)
+		log.Printf("Could not marshal ServiceEntrySpec. Error: %v", err)
 		return nil, err
 	}
 
@@ -55,18 +55,18 @@ func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
 	return buffer.Bytes(), nil
 }
 
-func (p *VirtualServiceSpec) UnmarshalJSON(b []byte) error {
+func (p *ServiceEntrySpec) UnmarshalJSON(b []byte) error {
 	reader := bytes.NewReader(b)
 	unmarshaler := jsonpb.Unmarshaler{}
-	err := unmarshaler.Unmarshal(reader, &p.VirtualService)
+	err := unmarshaler.Unmarshal(reader, &p.ServiceEntry)
 	if err != nil {
-		log.Printf("Could not unmarshal PolicySpec. Error: %v", err)
+		log.Printf("Could not unmarshal ServiceEntrySpec. Error: %v", err)
 		return err
 	}
 	return nil
 }
 
 // DeepCopyInto is a deepcopy function, copying the receiver, writing into out. in must be non-nil.
-func (in *VirtualServiceSpec) DeepCopyInto(out *VirtualServiceSpec) {
+func (in *ServiceEntrySpec) DeepCopyInto(out *ServiceEntrySpec) {
 	*out = *in
 }

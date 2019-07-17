@@ -14,38 +14,38 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualService is a Istio VirtualService resource
-type VirtualService struct {
+// DestinationRule is a Istio DestinationRule resource
+type DestinationRule struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec VirtualServiceSpec `json:"spec"`
+	Spec DestinationRuleSpec `json:"spec"`
 }
 
-func (vs *VirtualService) GetSpecMessage() proto.Message {
-	return &vs.Spec.VirtualService
+func (dr *DestinationRule) GetSpecMessage() proto.Message {
+	return &dr.Spec.DestinationRule
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualServiceList is a list of VirtualService resources
-type VirtualServiceList struct {
+// DestinationRuleList is a list of DestinationRule resources
+type DestinationRuleList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 
-	Items []VirtualService `json:"items"`
+	Items []DestinationRule `json:"items"`
 }
 
-// VirtualServiceSpec is a wrapper around Istio VirtualService
-type VirtualServiceSpec struct {
-	istiov1alpha3.VirtualService
+// DestinationRuleSpec is a wrapper around Istio DestinationRule
+type DestinationRuleSpec struct {
+	istiov1alpha3.DestinationRule
 }
 
-func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
+func (p *DestinationRuleSpec) MarshalJSON() ([]byte, error) {
 	buffer := bytes.Buffer{}
 	writer := bufio.NewWriter(&buffer)
 	marshaler := jsonpb.Marshaler{}
-	err := marshaler.Marshal(writer, &p.VirtualService)
+	err := marshaler.Marshal(writer, &p.DestinationRule)
 	if err != nil {
 		log.Printf("Could not marshal PolicySpec. Error: %v", err)
 		return nil, err
@@ -55,10 +55,10 @@ func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
 	return buffer.Bytes(), nil
 }
 
-func (p *VirtualServiceSpec) UnmarshalJSON(b []byte) error {
+func (p *DestinationRuleSpec) UnmarshalJSON(b []byte) error {
 	reader := bytes.NewReader(b)
 	unmarshaler := jsonpb.Unmarshaler{}
-	err := unmarshaler.Unmarshal(reader, &p.VirtualService)
+	err := unmarshaler.Unmarshal(reader, &p.DestinationRule)
 	if err != nil {
 		log.Printf("Could not unmarshal PolicySpec. Error: %v", err)
 		return err
@@ -67,6 +67,6 @@ func (p *VirtualServiceSpec) UnmarshalJSON(b []byte) error {
 }
 
 // DeepCopyInto is a deepcopy function, copying the receiver, writing into out. in must be non-nil.
-func (in *VirtualServiceSpec) DeepCopyInto(out *VirtualServiceSpec) {
+func (in *DestinationRuleSpec) DeepCopyInto(out *DestinationRuleSpec) {
 	*out = *in
 }

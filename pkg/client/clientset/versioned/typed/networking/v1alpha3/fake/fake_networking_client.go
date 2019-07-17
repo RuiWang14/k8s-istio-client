@@ -28,6 +28,22 @@ type FakeNetworkingV1alpha3 struct {
 	*testing.Fake
 }
 
+func (c *FakeNetworkingV1alpha3) DestinationRules(namespace string) v1alpha3.DestinationRuleInterface {
+	return &FakeDestinationRules{c, namespace}
+}
+
+func (c *FakeNetworkingV1alpha3) EnvoyFilters(namespace string) v1alpha3.EnvoyFilterInterface {
+	return &FakeEnvoyFilters{c, namespace}
+}
+
+func (c *FakeNetworkingV1alpha3) Gateways(namespace string) v1alpha3.GatewayInterface {
+	return &FakeGateways{c, namespace}
+}
+
+func (c *FakeNetworkingV1alpha3) ServiceEntries(namespace string) v1alpha3.ServiceEntryInterface {
+	return &FakeServiceEntries{c, namespace}
+}
+
 func (c *FakeNetworkingV1alpha3) VirtualServices(namespace string) v1alpha3.VirtualServiceInterface {
 	return &FakeVirtualServices{c, namespace}
 }

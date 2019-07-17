@@ -14,40 +14,40 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualService is a Istio VirtualService resource
-type VirtualService struct {
+// Gateway is a Istio Gateway resource
+type Gateway struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec VirtualServiceSpec `json:"spec"`
+	Spec GatewaySpec `json:"spec"`
 }
 
-func (vs *VirtualService) GetSpecMessage() proto.Message {
-	return &vs.Spec.VirtualService
+func (vs *Gateway) GetSpecMessage() proto.Message {
+	return &vs.Spec.Gateway
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualServiceList is a list of VirtualService resources
-type VirtualServiceList struct {
+// GatewayList is a list of Gateway resources
+type GatewayList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 
-	Items []VirtualService `json:"items"`
+	Items []Gateway `json:"items"`
 }
 
-// VirtualServiceSpec is a wrapper around Istio VirtualService
-type VirtualServiceSpec struct {
-	istiov1alpha3.VirtualService
+// GatewaySpec is a wrapper around Istio Gateway
+type GatewaySpec struct {
+	istiov1alpha3.Gateway
 }
 
-func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
+func (p *GatewaySpec) MarshalJSON() ([]byte, error) {
 	buffer := bytes.Buffer{}
 	writer := bufio.NewWriter(&buffer)
 	marshaler := jsonpb.Marshaler{}
-	err := marshaler.Marshal(writer, &p.VirtualService)
+	err := marshaler.Marshal(writer, &p.Gateway)
 	if err != nil {
-		log.Printf("Could not marshal PolicySpec. Error: %v", err)
+		log.Printf("Could not marshal GatewaySpec. Error: %v", err)
 		return nil, err
 	}
 
@@ -55,18 +55,18 @@ func (p *VirtualServiceSpec) MarshalJSON() ([]byte, error) {
 	return buffer.Bytes(), nil
 }
 
-func (p *VirtualServiceSpec) UnmarshalJSON(b []byte) error {
+func (p *GatewaySpec) UnmarshalJSON(b []byte) error {
 	reader := bytes.NewReader(b)
 	unmarshaler := jsonpb.Unmarshaler{}
-	err := unmarshaler.Unmarshal(reader, &p.VirtualService)
+	err := unmarshaler.Unmarshal(reader, &p.Gateway)
 	if err != nil {
-		log.Printf("Could not unmarshal PolicySpec. Error: %v", err)
+		log.Printf("Could not unmarshal GatewaySpec. Error: %v", err)
 		return err
 	}
 	return nil
 }
 
 // DeepCopyInto is a deepcopy function, copying the receiver, writing into out. in must be non-nil.
-func (in *VirtualServiceSpec) DeepCopyInto(out *VirtualServiceSpec) {
+func (in *GatewaySpec) DeepCopyInto(out *GatewaySpec) {
 	*out = *in
 }
