@@ -2,7 +2,31 @@
 
 a go client for operating istio in k8s cluster
 
-## 原理
+
+## CRD 代码生成
+步骤如下：
+1. 在 pkg/apis/{API Group}/{version} 下编写 crd 定义
+2. 增加合适的代码生成标签，[参考](https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/)
+3. 利用 [code-generator](https://github.com/kubernetes/code-generator) 生成 clientset、informer 等代码
+
+如果是需要操作别人已经预先定义好的 crd，可以直接在定义 crd 时进行引用。
+以 istio 的 virtual service 为例，只需引入 istio.io/api/networking/v1alpha3/VirtualService 即可。
+
+### Istio crd 代码生成
+
+``` bash
+# 代码生成的工作目录，也就是我们的项目路径
+ROOT_PACKAGE="github.com/RuiWang14/k8s-istio-client"
+
+# 安装 k8s.io/code-generator
+go get -u k8s.io/code-generator/...
+cd $GOPATH/src/k8s.io/code-generator
+
+# 执行代码自动生成，其中 pkg/client 是生成目标目录，pkg/apis 是类型定义目录
+./generate-groups.sh all "$ROOT_PACKAGE/pkg/client" "$ROOT_PACKAGE/pkg/apis" "authentication:v1alpha1 networking:v1alpha3"
+```
+
+## customer controller 原理
 
 ![image](https://raw.githubusercontent.com/RuiWang14/k8s-istio-client/master/docs/imgs/customer%20controller.png)
 
@@ -22,14 +46,3 @@ control loop 控制循环:
 
 - “期望状态”：APIServer 里保存的，用户提交到 APIServer 里的信息（已经缓存在了本地）；
 - “实际状态”：集群/业务实际的状态；
-
-## CRD 代码生成
-步骤如下：
-1. 在 pkg/apis/{API Group}/{version} 下编写 crd 定义
-2. 增加合适的代码生成标签，[参考](https://blog.openshift.com/kubernetes-deep-dive-code-generation-customresources/)
-3. 利用 [code-generator](https://github.com/kubernetes/code-generator) 生成 clientset、informer 等代码
-
-如果是需要操作别人已经预先定义好的 crd，可以直接在定义 crd 时进行引用。
-以 istio 的 virtual service 为例，只需引入 istio.io/api/networking/v1alpha3/VirtualService 即可。
-
-
