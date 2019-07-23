@@ -19,8 +19,8 @@ limitations under the License.
 package v1alpha3
 
 import (
-	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
-	"github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/scheme"
+	v1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	"github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 

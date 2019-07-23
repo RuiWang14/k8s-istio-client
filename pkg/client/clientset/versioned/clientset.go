@@ -19,8 +19,8 @@ limitations under the License.
 package versioned
 
 import (
-	authenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1"
-	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
+	authenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1"
+	networkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

@@ -21,8 +21,8 @@ package v1alpha1
 import (
 	"time"
 
-	v1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
-	scheme "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/scheme"
+	v1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	scheme "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"

@@ -21,8 +21,8 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
-	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	v1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	v1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

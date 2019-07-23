@@ -1,7 +1,7 @@
 package v1alpha3
 
 import (
-	networkingcontroller "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking"
+	networkingcontroller "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"

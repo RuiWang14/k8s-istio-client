@@ -1,7 +1,7 @@
 package v1alpha1
 
 import (
-	authenticationcontroller "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication"
+	authenticationcontroller "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"

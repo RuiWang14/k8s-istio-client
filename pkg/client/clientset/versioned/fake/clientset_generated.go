@@ -19,11 +19,11 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	authenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1"
-	fakeauthenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1/fake"
-	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
-	fakenetworkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3/fake"
+	clientset "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
+	authenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1"
+	fakeauthenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/authentication/v1alpha1/fake"
+	networkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
+	fakenetworkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

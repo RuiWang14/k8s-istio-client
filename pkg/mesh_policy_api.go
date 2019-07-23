@@ -2,7 +2,7 @@ package istioapi
 
 import (
 	"fmt"
-	"github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	"github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/util/retry"
 	"log"

@@ -1,7 +1,7 @@
 package istioapi
 
 import (
-	versionedclient "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
+	versionedclient "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
 	"k8s.io/client-go/tools/clientcmd"
 	"log"
 )

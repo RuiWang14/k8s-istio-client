@@ -19,8 +19,8 @@ limitations under the License.
 package networking
 
 import (
-	internalinterfaces "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/networking/v1alpha3"
+	internalinterfaces "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/networking/v1alpha3"
 )
 
 // Interface provides access to each of this group's versions.

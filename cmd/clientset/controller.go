@@ -17,11 +17,11 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/client-go/util/workqueue"
 
-	networkingV1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
-	clientset "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	networkingScheme "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/scheme"
-	informers "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/networking/v1alpha3"
-	listers "github.com/RuiWang14/k8s-istio-client/pkg/client/listers/networking/v1alpha3"
+	networkingV1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	clientset "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
+	networkingScheme "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/scheme"
+	informers "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/networking/v1alpha3"
+	listers "github.com/ruiwang47/k8s-istio-client/pkg/client/listers/networking/v1alpha3"
 )
 
 const controllerAgentName = "virtualservices-controller"

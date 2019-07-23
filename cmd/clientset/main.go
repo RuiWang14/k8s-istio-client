@@ -2,10 +2,10 @@ package main
 
 import (
 	"flag"
-	versionedclient "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	informers "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions"
+	versionedclient "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
+	informers "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions"
 
-	"github.com/RuiWang14/k8s-istio-client/pkg/signals"
+	"github.com/ruiwang47/k8s-istio-client/pkg/signals"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"

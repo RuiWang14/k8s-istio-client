@@ -19,8 +19,8 @@ limitations under the License.
 package scheme
 
 import (
-	authenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
-	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	authenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	networkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
