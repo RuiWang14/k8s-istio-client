@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	authenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
-	versioned "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/client/listers/authentication/v1alpha1"
+	authenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	versioned "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/client/listers/authentication/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

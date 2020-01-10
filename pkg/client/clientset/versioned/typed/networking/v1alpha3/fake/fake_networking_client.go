@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
+	v1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned/typed/networking/v1alpha3"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )

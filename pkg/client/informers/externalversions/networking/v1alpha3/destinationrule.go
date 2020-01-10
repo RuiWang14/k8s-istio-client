@@ -21,10 +21,10 @@ package v1alpha3
 import (
 	time "time"
 
-	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
-	versioned "github.com/RuiWang14/k8s-istio-client/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/client/listers/networking/v1alpha3"
+	networkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	versioned "github.com/ruiwang47/k8s-istio-client/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/client/listers/networking/v1alpha3"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

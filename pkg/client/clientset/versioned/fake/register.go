@@ -19,8 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	authenticationv1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/apis/authentication/v1alpha1"
-	networkingv1alpha3 "github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	authenticationv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/authentication/v1alpha1"
+	networkingv1alpha3 "github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	rbacv1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/apis/rbac/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -34,6 +35,7 @@ var parameterCodec = runtime.NewParameterCodec(scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
 	authenticationv1alpha1.AddToScheme,
 	networkingv1alpha3.AddToScheme,
+	rbacv1alpha1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

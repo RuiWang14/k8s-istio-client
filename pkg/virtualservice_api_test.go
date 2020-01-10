@@ -2,7 +2,7 @@ package istioapi
 
 import (
 	"flag"
-	"github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	"github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
 	"log"
 	"testing"
 

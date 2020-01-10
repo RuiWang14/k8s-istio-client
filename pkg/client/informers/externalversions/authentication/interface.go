@@ -19,8 +19,8 @@ limitations under the License.
 package authentication
 
 import (
-	v1alpha1 "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/authentication/v1alpha1"
-	internalinterfaces "github.com/RuiWang14/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/authentication/v1alpha1"
+	internalinterfaces "github.com/ruiwang47/k8s-istio-client/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

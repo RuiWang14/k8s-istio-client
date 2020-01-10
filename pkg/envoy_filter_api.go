@@ -2,7 +2,7 @@ package istioapi
 
 import (
 	"fmt"
-	"github.com/RuiWang14/k8s-istio-client/pkg/apis/networking/v1alpha3"
+	"github.com/ruiwang47/k8s-istio-client/pkg/apis/networking/v1alpha3"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/util/retry"
 	"log"
